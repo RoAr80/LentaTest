@@ -47,7 +47,7 @@ namespace InternshipControl.Controllers
         private async Task<ActionResult> UpdateApprove(string id, bool approve)
         {
             User user = await _userManager.FindByIdAsync(id);
-            User admin = await _userManager.GetUserAsync(this.User);
+            //User admin = await _userManager.GetUserAsync(this.User);
 
             if (user != null)
             {                
