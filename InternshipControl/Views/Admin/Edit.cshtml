@@ -1,0 +1,59 @@
+﻿@model AdminUserViewModel
+@{
+    ViewBag.Title = "Редактирование пользователя";
+}
+<div class="signup-form">
+    <form method="post" asp-action="Edit">
+        <h2>Редактировать</h2>
+        <hr>
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <label asp-for="Id"></label><br />
+            <input asp-for="Id" type="text" class="form-control" placeholder="Id" readonly>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label><br />
+            <input asp-for="Email" class="form-control" placeholder="Email" required="required">
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NameSurnameFathername"></label><br />
+            <input asp-for="NameSurnameFathername" class="form-control" placeholder="ФИО" required="required">
+            <span class="text-danger" asp-validation-for="NameSurnameFathername"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateOfBirth">Дата рождения</label><br />
+            <input value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" asp-for="DateOfBirth" type="date" asp-format="{0: dd-MM-yyyy}">
+            <span class="text-danger" asp-validation-for="DateOfBirth"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="University"></label><br />
+            <input asp-for="University" class="form-control" placeholder="Название Университета" required="required">
+            <span class="text-danger" asp-validation-for="University"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Course"></label><br />
+            <input asp-for="Course" class="form-control" placeholder="Курс" required="required">
+            <span class="text-danger" asp-validation-for="Course"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Faculty"></label><br />
+            <input asp-for="Faculty" class="form-control" placeholder="Факультет" required="required">
+            <span class="text-danger" asp-validation-for="Faculty"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber"></label><br />
+            <input asp-for="PhoneNumber" class="form-control" placeholder="+79990000" required="required">
+            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AdditionalInfo"></label><br />
+            <textarea asp-for="AdditionalInfo" type="text" class="form-control" placeholder="О себе" required="required"></textarea>
+            <span class="text-danger" asp-validation-for="AdditionalInfo"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-lg" value="Сохранить" />
+        </div>
+    </form>
+</div>

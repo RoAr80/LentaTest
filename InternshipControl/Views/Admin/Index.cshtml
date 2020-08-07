@@ -1,0 +1,109 @@
+﻿@model IEnumerable<User>
+<a asp-action="CreateUser" class="btn btn-primary" >Создать нового пользователя</a>
+
+<h1>Список всех пользователей</h1>
+<h2>Неутвержденные</h2>
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>ФИО</th>
+        <th>Дата рождения</th>
+        <th>Название ВУЗа</th>
+        <th>Курс</th>
+        <th>Факультет</th>
+        <th>Номер телефона</th>
+        <th>Информация о себе</th>
+        <th>Дата создания</th>
+        <th>Дата изменения</th>
+        <th>Кем создано</th>
+        <th>Кем изменено</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (User u in Model.Where(u => !u.Approved))
+    {
+        <tr>
+            <td>@u.Email</td>
+            @*<td>@Model.Password</td>*@
+            <td>@u.NameSurnameFathername</td>
+            <td>@u.DateOfBirth.ToShortDateString()</td>
+            <td>@u.University</td>
+            <td>@u.Course</td>
+            <td>@u.Faculty</td>
+            <td>@u.PhoneNumber</td>
+            <td>@u.AdditionalInfo</td>
+            <td>@u.CreateDate</td>
+            <td>@u.EditDate</td>
+            <td>@u.WhoCreated</td>
+            <td>@u.WhoEdited</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@u.Id" method="post">
+                    <a asp-action="Edit" asp-route-id="@u.Id">Изменить</a>
+                    <button type="submit" class="btn btn-danger">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+            <td>
+                <form asp-action="Approve" asp-route-id="@u.Id" method="post">
+                    <button type="submit" class="btn btn-success">
+                        Утвердить
+                    </button>
+                </form>
+            </td>
+
+        </tr>
+    }
+</table>
+
+<h2>Утвержденные</h2>
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>ФИО</th>
+        <th>Дата рождения</th>
+        <th>Название ВУЗа</th>
+        <th>Курс</th>
+        <th>Факультет</th>
+        <th>Номер телефона</th>
+        <th>Информация о себе</th>
+        <th>Дата создания</th>
+        <th>Дата изменения</th>
+        <th>Кем создано</th>
+        <th>Кем изменено</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (User u in Model.Where(u => u.Approved))
+    {
+        <tr>
+            <td>@u.Email</td>            
+            <td>@u.NameSurnameFathername</td>
+            <td>@u.DateOfBirth.ToShortDateString()</td>
+            <td>@u.University</td>
+            <td>@u.Course</td>
+            <td>@u.Faculty</td>
+            <td>@u.PhoneNumber</td>
+            <td>@u.AdditionalInfo</td>
+            <td>@u.CreateDate</td>
+            <td>@u.EditDate</td>
+            <td>@u.WhoCreated</td>
+            <td>@u.WhoEdited</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@u.Id" method="post">
+                    <a asp-action="Edit" asp-route-id="@u.Id">Изменить</a>
+                    <button type="submit" class="btn btn-danger">
+                        Удалить
+                    </button>
+                </form>
+            </td>
+            <td>
+                <form asp-action="Remove" asp-route-id="@u.Id" method="post">
+                    <button type="submit" class="btn btn-warning">
+                        Убрать
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,54 @@
+﻿@model RegisterViewModel
+<div class="signup-form">
+    <form method="post" asp-action="CreateUser">
+        <h2>Создать нового пользователя</h2>
+        <hr>
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="form-group">
+            <input asp-for="Email" class="form-control" placeholder="Email" required="required">
+            <span class="text-danger" asp-validation-for="Email"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="Password" class="form-control" placeholder="Пароль" required="required">
+            <span class="text-danger" asp-validation-for="Password"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="PasswordConfirm" class="form-control" placeholder="Подтвердите пароль" required="required">
+            <span class="text-danger" asp-validation-for="PasswordConfirm"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="NameSurnameFathername" type="text" class="form-control" placeholder="ФИО" required="required">
+            <span class="text-danger" asp-validation-for="NameSurnameFathername"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateOfBirth">Дата рождения</label><br />
+            <input asp-for="DateOfBirth" type="date" asp-format="{0:dd-MM-yyyy}" class="form-control" />
+            <span class="text-danger" asp-validation-for="DateOfBirth"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="University" class="form-control" placeholder="Название Университета" required="required">
+            <span class="text-danger" asp-validation-for="University"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="Course" class="form-control" placeholder="Курс" required="required">
+            <span class="text-danger" asp-validation-for="Course"></span>
+        </div>
+        <div class="form-group">
+            <input asp-for="Faculty" class="form-control" placeholder="Факультет" required="required">
+            <span class="text-danger" asp-validation-for="Faculty"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PhoneNumber">Номер телефона</label><br />
+            <input asp-for="PhoneNumber" class="form-control" placeholder="+79990000000" required="required">
+            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+        </div>
+        <div class="form-group">
+            <textarea asp-for="AdditionalInfo" type="text" class="form-control" placeholder="О себе" required="required"></textarea>
+            <span class="text-danger" asp-validation-for="AdditionalInfo"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-lg" value="Создать">
+        </div>
+    </form>    
+</div>
